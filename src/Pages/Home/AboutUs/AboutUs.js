@@ -13,14 +13,16 @@ const AboutUs = () => {
               className="rounded-lg shadow-2xl w-3/5 mx-auto"
             />
           </div>
-          <div className="sm:w-full md:w-1/2">
+          <div className="text-center sm:w-full md:w-1/2">
             <h1 className="text-2xl font-bold">Buy And Sell Used Books</h1>
             <p className="py-6 font-semibold">
               Search And Buy Second Hand Books Near You.Post Free Ad To Sell Old
               Books In City.Billed As The Largest In The City.And The Collection
               More Than 50k Items.
             </p>
-            <button className="btn btn-primary">Learn More</button>
+            <p className="text-center">
+              <button className="btn btn-primary">Learn More</button>
+            </p>
           </div>
         </div>
       </div>

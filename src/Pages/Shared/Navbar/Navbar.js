@@ -19,6 +19,9 @@ const Navbar = () => {
       <li className="text-primary font-semibold">
         <Link to="/login">Login</Link>
       </li>
+      <li className="text-primary font-semibold">
+        <Link to="/blogs">Blogs</Link>
+      </li>
     </React.Fragment>
   );
   return (
