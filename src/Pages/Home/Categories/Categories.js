@@ -12,7 +12,7 @@ const Categories = () => {
   return (
     <div className="mt-8">
       <h1 className="text-4xl font-bold text-center">All Categories </h1>
-      <div className="bg-base-200 flex w-4/5 mx-auto justify-evenly mt-8 p-40">
+      <div className="bg-base-200 text-center w-4/5 mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 p-40">
         {categories.map((category) => (
           <p key={category._id}>
             <Link to={`/category/${category.categoryId}`}>
