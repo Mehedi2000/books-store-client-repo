@@ -14,7 +14,7 @@ const SignUp = () => {
 
   const { createUser, updateUser } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
-  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  // const [createdUserEmail, setCreatedUserEmail] = useState("");
   //   const [token] = UseToken(createdUserEmail);
   const navigate = useNavigate();
 
@@ -35,6 +35,7 @@ const SignUp = () => {
         };
         updateUser(userInfo)
           .then(() => {
+            navigate("/");
             // saveUser(data.name, data.email);
           })
           .catch((error) => console.log(error));
