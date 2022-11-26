@@ -35,7 +35,7 @@ const MyOrders = () => {
           </thead>
           <tbody>
             {bookings.map((book, i) => (
-              <tr>
+              <tr key={book._id}>
                 <th>{i + 1}</th>
                 <td>
                   <div className="avatar">

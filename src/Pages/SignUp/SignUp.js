@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
-// import UseToken from "../../hooks/UseToken";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
   const {
@@ -14,13 +14,13 @@ const SignUp = () => {
 
   const { createUser, updateUser } = useContext(AuthContext);
   const [signUpError, setSignUpError] = useState("");
-  // const [createdUserEmail, setCreatedUserEmail] = useState("");
-  //   const [token] = UseToken(createdUserEmail);
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
   const navigate = useNavigate();
 
-  //   if (token) {
-  //     navigate("/");
-  //   }
+  if (token) {
+    navigate("/");
+  }
 
   const handleSignUp = (data) => {
     console.log(data);
@@ -35,8 +35,7 @@ const SignUp = () => {
         };
         updateUser(userInfo)
           .then(() => {
-            navigate("/");
-            // saveUser(data.name, data.email);
+            saveUser(data.name, data.email, data.option);
           })
           .catch((error) => console.log(error));
       })
@@ -46,20 +45,20 @@ const SignUp = () => {
       });
   };
 
-  //   const saveUser = (name, email) => {
-  //     const user = { name, email };
-  //     fetch("http://localhost:5000/users", {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(user),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         setCreatedUserEmail(email);
-  //       });
-  //   };
+  const saveUser = (name, email, role) => {
+    const user = { name, email, role };
+    fetch("http://localhost:8000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCreatedUserEmail(email);
+      });
+  };
   return (
     <div className="h-[800px] flex justify-center items-center">
       <div className="w-96 p-10 border-2">
