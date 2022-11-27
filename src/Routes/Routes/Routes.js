@@ -2,13 +2,17 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
+import AllBuyers from "../../Pages/DashBoard/AllBuyers/AllBuyers";
+import Allsellers from "../../Pages/DashBoard/AllSellers/Allsellers";
 import DashBoard from "../../Pages/DashBoard/DashBoard/DashBoard";
 import MyOrders from "../../Pages/DashBoard/MyOrders/MyOrders";
+import ReportedItems from "../../Pages/DashBoard/ReportedItems/ReportedItems";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import SingleCategory from "../../Pages/Home/Categories/SingleCategory";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
+import AdminRoute from "../AdminRoute/AdminRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -60,6 +64,31 @@ export const router = createBrowserRouter([
       {
         path: "/dashboard/myorders",
         element: <MyOrders></MyOrders>,
+      },
+      {
+        path: "/dashboard/sellers",
+        element: (
+          <AdminRoute>
+            <Allsellers></Allsellers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/buyers",
+        element: (
+          <AdminRoute>
+            <AllBuyers></AllBuyers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/reportedItems",
+        element: (
+          <AdminRoute>
+            {" "}
+            <ReportedItems></ReportedItems>
+          </AdminRoute>
+        ),
       },
     ],
   },
