@@ -7,7 +7,9 @@ const Categories = () => {
   const { data: categories = [], isLoading } = useQuery({
     queryKey: ["categories"],
     queryFn: () =>
-      fetch("http://localhost:8000/categories").then((res) => res.json()),
+      fetch("https://books-store-server-delta.vercel.app/categories").then(
+        (res) => res.json()
+      ),
   });
   if (isLoading) {
     return <Loading></Loading>;

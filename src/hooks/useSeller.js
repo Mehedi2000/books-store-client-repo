@@ -5,7 +5,7 @@ const useSeller = (email) => {
   const [isSellerLoading, setIsSellerloading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:8000/users/seller/${email}`)
+      fetch(`https://books-store-server-delta.vercel.app/users/seller/${email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

@@ -65,7 +65,7 @@ const SignUp = () => {
 
   const saveUser = (name, email, role) => {
     const user = { name, email, role };
-    fetch("http://localhost:8000/users", {
+    fetch("https://books-store-server-delta.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -5,7 +5,7 @@ const useAdmin = (email) => {
   const [isAdminLoading, setIsAdminloading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`http://localhost:8000/users/admin/${email}`)
+      fetch(`https://books-store-server-delta.vercel.app/users/admin/${email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

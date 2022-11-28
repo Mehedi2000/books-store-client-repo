@@ -5,7 +5,7 @@ import { AuthContext } from "../../../Contexts/AuthProvider";
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
 
-  const url = `http://localhost:8000/bookings?email=${user?.email}`;
+  const url = `https://books-store-server-delta.vercel.app/bookings?email=${user?.email}`;
 
   const { data: bookings = [] } = useQuery({
     queryKey: ["bookings", user?.email],

@@ -43,7 +43,7 @@ const AddProduct = () => {
             postedTime: data.postedTime,
           };
           //save product information to the db
-          fetch("http://localhost:8000/products", {
+          fetch("https://books-store-server-delta.vercel.app/products", {
             method: "POST",
             headers: {
               "content-type": "application/json",

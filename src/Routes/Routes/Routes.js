@@ -49,7 +49,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:8000/category/${params.id}`),
+          fetch(
+            `https://books-store-server-delta.vercel.app/category/${params.id}`
+          ),
       },
     ],
   },

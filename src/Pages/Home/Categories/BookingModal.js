@@ -28,7 +28,7 @@ const BookingModal = ({ product, setProduct }) => {
       img,
     };
 
-    fetch("http://localhost:8000/bookings", {
+    fetch("https://books-store-server-delta.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

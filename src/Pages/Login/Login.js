@@ -35,6 +35,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
         setLoginUserEmail(data.email);
       })
       .catch((error) => {
@@ -60,7 +61,7 @@ const Login = () => {
   };
 
   const saveUser = (googleUser) => {
-    fetch("http://localhost:8000/users", {
+    fetch("https://books-store-server-delta.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",

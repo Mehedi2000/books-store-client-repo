@@ -12,7 +12,7 @@ const Allsellers = () => {
     setDeletingSeller(null);
   };
 
-  const url = `http://localhost:8000/sellers?role=${"Seller"}`;
+  const url = `https://books-store-server-delta.vercel.app/sellers?role=${"Seller"}`;
 
   const {
     data: sellers = [],
@@ -33,7 +33,7 @@ const Allsellers = () => {
 
   const handleDeleteSeller = (seller) => {
     console.log(seller);
-    fetch(`http://localhost:8000/seller/${seller._id}`, {
+    fetch(`https://books-store-server-delta.vercel.app/seller/${seller._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -49,7 +49,7 @@ const Allsellers = () => {
   };
 
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:8000/users/admin/${id}`, {
+    fetch(`https://books-store-server-delta.vercel.app/users/admin/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
