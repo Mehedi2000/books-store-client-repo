@@ -1,5 +1,7 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import useToken from "../../hooks/useToken";
@@ -11,7 +13,9 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  const { signIn } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+
+  const { signIn, providerLogin } = useContext(AuthContext);
   const [loginError, setLoginError] = useState("");
   const [loginUserEmail, setLoginUserEmail] = useState("");
   const [token] = useToken(loginUserEmail);
@@ -36,6 +40,37 @@ const Login = () => {
       .catch((error) => {
         console.error(error.message);
         setLoginError(error.message);
+      });
+  };
+
+  // google login
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        const googleUser = {
+          name: user.displayName,
+          email: user.email,
+          role: "Buyer",
+        };
+        toast.success("User Created Successfully");
+        saveUser(googleUser);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const saveUser = (googleUser) => {
+    fetch("http://localhost:8000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(googleUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setLoginUserEmail(googleUser.email);
       });
   };
   return (
@@ -89,7 +124,10 @@ const Login = () => {
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline btn-primary w-full">
+        <button
+          onClick={handleGoogleSignIn}
+          className="btn btn-outline btn-primary w-full"
+        >
           CONTINUE WITH GOOGLE
         </button>
       </div>
