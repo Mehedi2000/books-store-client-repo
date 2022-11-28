@@ -2,7 +2,7 @@
 
 <h4>Live Website Link : https://books-store-79396.web.app/ </h4>
 <h4>adminEmail: jihad@gmail.com </h4>
-<h4>adminPassword:<111111> </h4>
+<h4>adminPassword:111111 </h4>
 
 <h2>Technologies Used</h2>
 <ul>
